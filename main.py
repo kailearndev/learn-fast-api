@@ -1,5 +1,7 @@
+from dotenv import load_dotenv 
+load_dotenv()   
 from fastapi import FastAPI
-from modules.calculator.controller import router
+from modules.post.controller import router
 
-app = FastAPI()
-app.include_router(router, prefix="/calculator")
+app = FastAPI(title="FastAPI with Supabase Example")
+app.include_router(router, prefix="/posts", tags=["posts"])

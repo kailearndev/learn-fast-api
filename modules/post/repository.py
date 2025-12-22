@@ -19,10 +19,7 @@ def get_post_by_slug(slug: str):
     if not res.data:
             return None
     return res.data[0]
-        
     
-    
-
 
 def update_post(post_id: UUID, data: dict):
     res = supabase.table("posts").update(data).eq("id", str(post_id)).execute()

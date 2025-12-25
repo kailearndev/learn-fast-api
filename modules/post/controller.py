@@ -31,12 +31,9 @@ def create_post (payload: PostCreateDTO):
 @router.get("/", response_model=list[PostResponse])
 def get_posts():
     return list_all()
-
-
-
 # Get a post by ID
 @router.get("/{post_id}", response_model=PostResponse)
-def get_post(post_id: UUID):
+def get_post_by_id(post_id: UUID):
     p = get_by_id(post_id)
     if not p:
         raise HTTPException(status_code=404, detail="Post not found")

@@ -12,7 +12,7 @@ def get_post_by_id(post_id: UUID):
     res = supabase.table("posts").select("*").eq("id", str(post_id)).execute()
     if not res.data:
             return None
-    return res.data
+    return res.data[0]
 
 def get_post_by_slug(slug: str):
     res = supabase.table("posts").select("*").eq("slug", slug).execute()

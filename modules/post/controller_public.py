@@ -1,7 +1,8 @@
 from fastapi import APIRouter, HTTPException
-from uuid import UUID
 
 from modules.post.schema import (
+   
+    PostPagingResponse,
     PostResponse
 )
 from modules.post.service import (
@@ -12,9 +13,9 @@ router = APIRouter()
 # Create a new post
 
 # Get all posts
-@router.get("/", response_model=list[PostResponse])
-def get_posts():
-    return list_all()
+@router.get("/", response_model=PostPagingResponse)
+def get_posts(page: int = 1, limit: int = 10, search: str = None):
+    return list_all(page, limit, search)
 
 @router.get("/{slug}",  response_model=PostResponse)
 def get_post(slug: str):

@@ -110,7 +110,15 @@ app/
 ### NOTE thứ tự tạo module
 
 1. Tạo thư mục module trong `modules/`
-2. Tạo theo thứ tự file: controller, service, repository, schema
+2. Tạo theo thứ tự file:
+   - `schema.py`: Định nghĩa DTO / Validate
+   - `repository.py`: Logic thao tác data (với db thì viết query ở đây)
+   - `service.py`: Business logic, gọi repository xử lý
+   - `controller.py`: Định nghĩa route, gọi service xử lý
+   thứ tự tạo file từ dưới lên trên sẽ dễ hơn vì service phụ thuộc repository, controller phụ thuộc service
+   cách tạo này giúp tách biệt rõ ràng các layer, dễ bảo trì và mở rộng
+   ngoài ra tạo file thì tạo router luôn trong controller để đăng ký route
+
 3. Đăng ký router trong `main.py`
    "# learn-fast-api"
 ```

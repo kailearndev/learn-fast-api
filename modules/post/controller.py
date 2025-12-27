@@ -4,7 +4,7 @@ from fastapi.security import HTTPBearer
 
 from core.dependencies.auth import require_user
 from modules.post.schema import (
-    PostCreateDTO, PostUpdateDTO, PostResponse
+    PostPagingResponse, PostCreateDTO, PostUpdateDTO, PostResponse
 )
 from modules.post.service import (
     create, list_all, get_by_id, update, delete, get_by_slug
@@ -28,9 +28,9 @@ def create_post (payload: PostCreateDTO):
     return post
 
 # Get all posts
-@router.get("/", response_model=list[PostResponse])
-def get_posts():
-    return list_all()
+@router.get("/", response_model=PostPagingResponse )
+def get_posts( page: int = 1, limit: int = 10, search: str = None):
+    return list_all(page, limit, search)
 # Get a post by ID
 @router.get("/{post_id}", response_model=PostResponse)
 def get_post_by_id(post_id: UUID):

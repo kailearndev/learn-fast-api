@@ -10,8 +10,8 @@ from modules.post.repository import (
 
 def create(data: dict):
     return create_post(data)
-def list_all():
-    return get_posts()
+def list_all(page: int = 1, limit: int = 10, search: str = None):
+    return get_posts(page, limit, search)
 def get_by_id(post_id: UUID):
     return get_post_by_id(post_id)
 def get_by_slug(slug: str):

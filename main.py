@@ -59,7 +59,7 @@ if __name__ == "__main__":
         "main:app", 
         host=os.getenv("HOST", "0.0.0.0"),
         port=int(os.getenv("PORT", 8000)),
-        reload=os.getenv("ENV") == "development"  # Đã tắt reload theo yêu cầu của bạn
+        reload=os.getenv("ENV") != "development"  # Đã tắt reload theo yêu cầu của bạn
     )
 
 

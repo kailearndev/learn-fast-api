@@ -46,7 +46,10 @@ python -m venv venv
   venv\Scripts\activate
 - Mac / Linux:
 
-  source venv/bin/activate
+source venv/bin/activate
+
+````
+
 
 ### 3 Cài đặt dependencies
 
@@ -122,3 +125,4 @@ app/
 3. Đăng ký router trong `main.py`
    "# learn-fast-api"
 ```
+````

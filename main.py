@@ -27,7 +27,7 @@ origins = [
     "http://localhost",
     "http://localhost:3000",
     "http://localhost:5173",
-    "https://*.kaidev.space/",
+    "https://admin.blog.kaidev.space",
 ]
 app.add_middleware(
     CORSMiddleware,
